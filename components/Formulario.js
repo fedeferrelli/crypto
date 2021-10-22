@@ -49,7 +49,11 @@ const Formulario = ({ moneda, criptomoneda, guardarMoneda, guardarCriptomoneda, 
     return ( 
 
         <View style={styles.view} >
+
+            <View style={styles.card}>
             <Text style={styles.label}>Moneda</Text>
+
+            <View style = {styles.picker}>
             <Picker
                 selectedValue={moneda}
                 onValueChange={ moneda => obtenerMoneda(moneda) }
@@ -57,38 +61,54 @@ const Formulario = ({ moneda, criptomoneda, guardarMoneda, guardarCriptomoneda, 
             >
                 <Picker.Item label="- Seleccione -" value="" /> 
                 <Picker.Item label="Dolar de Estados Unidos" value="USD" /> 
-                <Picker.Item label="Peso Mexicano" value="MXN" /> 
                 <Picker.Item label="Euro" value="EUR" /> 
                 <Picker.Item label="Libra Esterlina" value="GBP" /> 
             </Picker>
+            </View>
 
+            </View>
+
+            <View style={styles.card}>
             <Text style={styles.label}>Criptomoneda</Text>
+
+            <View style = {styles.picker}>
             <Picker
                 selectedValue={criptomoneda}
                 onValueChange={ cripto => obtenerCriptomoneda(cripto) }
-                itemStyle={{ height: 120 }}
+                itemStyle={{ height: 120, textAlign: 'center' }}
             >
                 <Picker.Item label="- Seleccione -" value="" /> 
                 {criptomonedas.map( cripto => (
                     <Picker.Item key={cripto.CoinInfo.Id} label={cripto.CoinInfo.FullName} value={cripto.CoinInfo.Name} /> 
                 ))}
             </Picker>
-
+            </View>
+            </View>
+            
+            <View style={styles.viewbtn}>
             <TouchableHighlight
                 style={styles.btnCotizar}
                 onPress={ () => cotizarPrecio() }
             >
                 <Text style={styles.textoCotizar}>Cotizar</Text>
             </TouchableHighlight>
+            </View>
         </View>
      );
 }
 
 const styles = StyleSheet.create({
     view:{
-       // alignItems: "center",
-        //justifyContent: "center",
-   
+       alignItems: "center",
+        justifyContent: "center",
+        width: '100%',
+       
+    },
+
+    viewbtn:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
 
     },
 
@@ -96,11 +116,15 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase',
         fontSize: 22,
         marginVertical: 20,
+        textAlign: 'center',
+        width: '100%',
+        marginBottom: 0,
+        letterSpacing: 1.5,
     },
     btnCotizar: {
         backgroundColor: '#1C0C5B',
         padding: 10,
-        marginTop: 20,
+        marginTop: 15,
         width: "80%",
         borderRadius: 10,
         
@@ -111,6 +135,34 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase',
         textAlign: 'center',
         
+    }, 
+
+    picker:{
+        
+        width: '70%',
+        marginBottom: 20,
+        borderBottomWidth: 1,
+        borderBottomColor: "#1C0C5B",
+    },
+
+    card:{
+        backgroundColor: '#fff',
+        width: '90%',
+        borderRadius: 15,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginVertical: 5,
+
+        shadowColor: "#000",
+        shadowOffset: {
+	    width: 0,
+	    height: 5,
+        },
+        shadowOpacity: 0.34,
+        shadowRadius: 6.27,
+
+        elevation: 10,
+
     }
 });
  

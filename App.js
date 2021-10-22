@@ -4,6 +4,7 @@ import axios from 'axios';
 import Header from './components/Header'
 import Formulario from './components/Formulario';
 import Cotizacion from './components/Cotizacion';
+import Carrousel from "./components/Carrousel";
 
 
 const App  = () => {
@@ -37,7 +38,7 @@ const App  = () => {
   }, [consultarAPI]);
 
   // mostrar el spinner o el resultado
-  const componente = cargando ? <ActivityIndicator size="large" color="#5E49E2" /> : <Cotizacion  resultado={resultado} />
+  const componente = cargando ? <ActivityIndicator size="large" color="#1C0C5B" /> : <Cotizacion  resultado={resultado}/>
 
   return (
     <>
@@ -45,10 +46,7 @@ const App  = () => {
     <ScrollView>
         <Header />
 
-        <Image
-          style={styles.imagen}
-          source={ require('./assets/cryptomonedas.png') }
-        />
+        <Carrousel style={styles.carrousel}/>
 
         <View style={styles.contenido}>
             <Formulario 
@@ -59,7 +57,7 @@ const App  = () => {
               guardarConsultarAPI={guardarConsultarAPI}
             />
         </View>
-        <View style={{ marginTop: 40 }}>
+        <View style={styles.componente}>
           {componente}
         </View>
    
@@ -69,14 +67,16 @@ const App  = () => {
 };
 
 const styles = StyleSheet.create({
-  imagen: {
-    width: '95%',
-    height: 150,
-    marginHorizontal: '2.5%'
-  },
+  
   contenido: {
-    marginHorizontal: '2.5%'
+    marginHorizontal: '2.5%',
+    marginVertical: 0,
+  },
+
+  componente:{
+    marginTop: 20,
   }
+ 
 });
 
 export default App;
