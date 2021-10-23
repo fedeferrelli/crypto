@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
         letterSpacing: 1.5,
     },
     btnCotizar: {
-        backgroundColor: '#1C0C5B',
+        backgroundColor: '#C37B89',
         padding: 10,
         marginTop: 15,
         width: "80%",

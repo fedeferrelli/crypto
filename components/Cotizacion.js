@@ -8,11 +8,11 @@ const Cotizacion = ({resultado}) => {
 
     return ( 
         <View style={styles.resultado}>
-            <Text style={[styles.texto, styles.precio]}>
-                <Text style={styles.span}>{resultado.PRICE} </Text>
+            <Text style={[styles.texto]}>
+                <Text style={styles.span}>{resultado.FROMSYMBOL} </Text>
             </Text>
             <Text style={[styles.texto, styles.precio]}>
-                <Text style={styles.span}>{resultado.FROMSYMBOL} </Text>
+                <Text style={styles.span}>{resultado.PRICE} </Text>
             </Text>
             <Text style={styles.texto}>Precio más alto del día: {' '}
                 <Text style={styles.span}> {resultado.HIGHDAY} </Text>
@@ -32,7 +32,7 @@ const Cotizacion = ({resultado}) => {
 
 const styles = StyleSheet.create({
     resultado: {
-        backgroundColor: '#1C0C5B',
+        backgroundColor: '#C37B89',
         padding: 20,
         marginVertical: 0,
     },

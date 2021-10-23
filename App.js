@@ -5,7 +5,8 @@ import Header from './components/Header'
 import Formulario from './components/Formulario';
 import Cotizacion from './components/Cotizacion';
 import Carrousel from "./components/Carrousel";
-//import Animacion from "./components/Animated"
+//import Animacion from "./components/Animated";
+import { Dimensions } from 'react-native';
 
 
 const App  = () => {
@@ -39,39 +40,29 @@ const App  = () => {
   }, [consultarAPI]);
 
   // mostrar el spinner o el resultado
-  const componente = cargando ? <ActivityIndicator size="large" color="#1C0C5B" /> : <Cotizacion  resultado={resultado}/>
+  const componente = cargando ? <ActivityIndicator size="large" color="#C37B89" /> : <Cotizacion  resultado={resultado}/>
 
+  // animación de entrada
   const [animacion] = useState(new Animated.Value(0));
 
- useEffect(() => {
+  useEffect(() => {
     
     Animated.timing(
         animacion, {
             toValue: 1,
             duration: 2000,
-            useNativeDriver: false,
+           useNativeDriver: false,
         }
     ).start();
 
  }, []);
 
   return (
-
-
-
     <>
-    <StatusBar backgroundColor="#1C0C5B"  ></StatusBar>
-    <Animated.ScrollView style={[styles.view, {opacity: animacion}] }>
-
-    
+    <StatusBar backgroundColor="#C37B89"  ></StatusBar>
+    <Animated.ScrollView style={[styles.view, {flex: animacion, opacity : animacion}] }>
         <Header />
-       
-        
-
         <Carrousel style={styles.carrousel}/>
-
-        
-
         <View style={styles.contenido}>
             <Formulario 
               moneda={moneda}
@@ -84,7 +75,6 @@ const App  = () => {
         <View style={styles.componente}>
           {componente}
         </View>
-   
       </Animated.ScrollView>
     </>
   );
@@ -94,12 +84,9 @@ const styles = StyleSheet.create({
 
   view:{
     width:"100%",
-    
-    backgroundColor: "orange",
-    
-    
-},
-  
+    backgroundColor: "#D1E8E4", 
+  },
+ 
   contenido: {
     marginHorizontal: '2.5%',
     marginVertical: 0,

@@ -9,7 +9,7 @@ const Header = () =>{
 
 const styles = StyleSheet.create({
     header:{
-        backgroundColor: '#1C0C5B',
+        backgroundColor: '#C37B89',
         paddingVertical: 15,
         textAlign: 'center',
         fontSize: 20,
